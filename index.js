@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(morgan('dev'));
 
 // Routes
@@ -21,6 +22,8 @@ app.use('/api/admin', require('./routes/admin'));
 app.use('/api/jobs', require('./routes/jobs'));
 app.use('/api/talents', require('./routes/talents'));
 app.use('/api/messages', require('./routes/messages'));
+app.use('/api/projects', require('./routes/projects'));
+app.use('/api/applications', require('./routes/applications'));
 
 // Basic Route
 app.get('/', (req, res) => {

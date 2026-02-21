@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { protect, admin } = require('../middleware/authMiddleware');
-const User = require('../models/User');
+const User = require('../models/UserSimple');
 const Job = require('../models/Job');
 
 // @route   GET api/admin/stats

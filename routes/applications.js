@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Application = require('../models/Application');
 const Job = require('../models/Job');
-const User = require('../models/User');
+const User = require('../models/UserSimple');
 const { protect } = require('../middleware/authMiddleware');
 
 // Apply to a job

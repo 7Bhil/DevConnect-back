@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../models/UserSimple');
 
 // Get all developers as talents with filtering
 router.get('/', async (req, res) => {

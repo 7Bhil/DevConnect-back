@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const User = require('../models/UserSimple');
 const { protect } = require('../middleware/authMiddleware');
 const { validateUser } = require('../middleware/validation');
 
@@ -40,10 +41,15 @@ router.post('/register', async (req, res) => {
     // Generate avatar
     const avatar = generateNeutralAvatar(name);
 
-    user = new User({ 
+    // Hash password manually
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+
+    // Create user directly with create method
+    user = await User.create({ 
       name, 
       email, 
-      password, 
+      password: hashedPassword, 
       role: role || 'developer', 
       bio: bio || '', 
       skills: skills || [], 
@@ -55,7 +61,6 @@ router.post('/register', async (req, res) => {
       isAvailable: isAvailable !== undefined ? isAvailable : true,
       avatar: avatar
     });
-    await user.save();
 
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1d' });
     res.status(201).json({ token, user: { id: user._id, name, email, role, bio, skills, location, country, whatsapp, linkedin, contractType, isAvailable, avatar } });

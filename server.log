@@ -2,6 +2,26 @@
 > server@1.0.0 start
 > node index.js
 
-[dotenv@17.3.1] injecting env (3) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[dotenv@17.3.1] injecting env (3) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
 Server is running on port 5000
 MongoDB Connected: localhost
+[0mPOST /api/auth/login [33m400[0m 18.273 ms - 33[0m
+[0mGET /api/talents [32m200[0m 30.285 ms - 557[0m
+[0mPOST /api/auth/login [33m400[0m 272.463 ms - 33[0m
+[0mPOST /api/auth/login [33m400[0m 234.462 ms - 33[0m
+[0mPOST /api/auth/login [33m400[0m 231.743 ms - 33[0m
+[0mGET /api/talents [32m200[0m 25.918 ms - 4619[0m
+[0mPOST /api/auth/login [32m200[0m 238.928 ms - 293[0m
+[0mPOST /api/auth/login [32m200[0m 229.777 ms - 285[0m
+[0mGET /api/projects [31m500[0m 17.398 ms - 97[0m
+[0mGET /api/talents [32m200[0m 20.530 ms - 4619[0m
+[0mGET /api/projects/my [32m200[0m 16.708 ms - 2[0m
+[0mGET /api/projects/my [36m304[0m 14.198 ms - -[0m
+[0mGET /api/projects [31m500[0m 9.009 ms - 97[0m
+[0mGET /api/projects [31m500[0m 8.844 ms - 97[0m
+[0mGET /api/admin/stats [32m200[0m 17.941 ms - 52[0m
+[0mGET /api/admin/users [32m200[0m 14.492 ms - 5326[0m
+[0mGET /api/projects [31m500[0m 8.102 ms - 97[0m
+[0mGET /api/admin/stats [36m304[0m 16.071 ms - -[0m
+[0mGET /api/admin/users [36m304[0m 13.148 ms - -[0m
+[0mGET /api/projects [31m500[0m 6.900 ms - 97[0m

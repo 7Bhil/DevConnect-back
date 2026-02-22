@@ -9,7 +9,7 @@ const projectSchema = new mongoose.Schema({
   image: String,
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'UserSimple',
     required: true
   }
 }, { timestamps: true });

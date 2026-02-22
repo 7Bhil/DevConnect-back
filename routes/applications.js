@@ -3,6 +3,7 @@ const router = express.Router();
 const Application = require('../models/Application');
 const Job = require('../models/Job');
 const User = require('../models/UserSimple');
+const Notification = require('../models/Notification');
 const { protect } = require('../middleware/authMiddleware');
 
 // Apply to a job
@@ -38,8 +39,8 @@ router.post('/', protect, async (req, res) => {
     }
 
     const application = new Application({
-      job: jobId,
       applicant: req.user._id,
+      job: jobId,
       coverLetter,
       resume,
       portfolio,
@@ -47,11 +48,10 @@ router.post('/', protect, async (req, res) => {
       availability
     });
 
-    const savedApplication = await application.save();
-    await savedApplication.populate('job', 'title company location salary');
-    await savedApplication.populate('applicant', 'name email avatar');
+    await application.save();
+    await application.populate('applicant job');
 
-    res.status(201).json(savedApplication);
+    res.status(201).json(application);
   } catch (error) {
     if (error.code === 11000) {
       return res.status(400).json({ message: 'You have already applied to this job' });
